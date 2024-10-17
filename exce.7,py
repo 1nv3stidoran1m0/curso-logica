@@ -1,0 +1,31 @@
+import random
+
+def desenhar_pinheiro(altura):
+    """
+    Desenha um pinheiro na tela.
+
+    Args:
+        altura (int): Altura do pinheiro.
+    """
+
+    for i in range(altura):
+        espacos = " " * (altura - i - 1)
+        estrelas = "*" * (2 * i + 1)
+        enfeites = ""
+        for j in range(2 * i + 1):
+            if random.randint(0, 10) == 0:  # Chance de 10% de ter um enfeite
+                enfeites += random.choice(["*", "O", "."])
+            else:
+                enfeites += " "
+        linha = espacos + enfeites
+        print(linha)
+
+    # Tronco
+    tronco = " " * (altura - 1) + "|"
+    print(tronco * 2)
+
+# Solicitar a altura do pinheiro ao usuário
+altura = int(input("Digite a altura do pinheiro: "))
+
+# Desenhar o pinheiro
+desenhar_pinheiro(altura)
